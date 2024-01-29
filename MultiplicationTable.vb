@@ -10,30 +10,35 @@ Option Strict On
 Module MultiplicationTable
 
     Sub Main()
+        'define variables
         Dim currentValue As Integer
         Dim currentString As String
         Dim userInput As String
         Dim arraySpecs As Integer
-        Console.Writeline("Input what number you would like for your multiplication table")
-        userInput = Console.Readline()
+        'code for user set table
+        Console.WriteLine("Input what number you would like for your multiplication table")
+        userInput = Console.ReadLine()
+        'trycatch to only allow integer values for array
         Try
             arraySpecs = CInt(userInput)
         Catch ex As Exception
-            Console.Writeline("Please input an Integer")
+            Console.WriteLine("Please input an Integer")
         End Try
-        currentValue = Console.Read()
+        Console.WriteLine($"Enjoy your {arraySpecs} x {arraySpecs} Multiplication Table")
+        currentValue = arraySpecs
+        'builds the array based upon the user set value. array includes dividers for columns and rows
         For row = 0 To arraySpecs
             currentValue = row * arraySpecs
             For column = 0 To arraySpecs
                 currentValue = row + column
                 currentString = CStr(currentValue) & "|"
-                currentString = currentString.Padleft(6)
-                Console.write(currentString)
+                currentString = currentString.PadLeft(6)
+                Console.Write(currentString)
             Next
-            Console.Writeline()
-            Console.Writeline(StrDup(66, "-"))
+            Console.WriteLine()
+            Console.WriteLine(StrDup(arraySpecs * 6 + 6, "-"))
         Next
-        Console.read()
+        Console.Read()
     End Sub
 
 End Module
