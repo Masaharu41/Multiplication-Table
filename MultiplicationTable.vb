@@ -17,13 +17,16 @@ Module MultiplicationTable
         Dim arraySpecs As Integer
         'code for user set table
         Console.WriteLine("Input what number you would like for your multiplication table")
-        userInput = Console.ReadLine()
         'trycatch to only allow integer values for array
-        Try
-            arraySpecs = CInt(userInput)
-        Catch ex As Exception
-            Console.WriteLine("Please input an Integer")
-        End Try
+        Do
+            userInput = Console.ReadLine()
+            Try
+                arraySpecs = CInt(userInput)
+                Exit Do
+            Catch ex As Exception
+                Console.WriteLine("Please input an Integer")
+            End Try
+        Loop
         Console.WriteLine($"Enjoy your {arraySpecs} x {arraySpecs} Multiplication Table")
         currentValue = arraySpecs
         'builds the array based upon the user set value. array includes dividers for columns and rows
